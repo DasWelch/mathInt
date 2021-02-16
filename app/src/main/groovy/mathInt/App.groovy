@@ -60,6 +60,10 @@ class App {
 // limited to + - * / or an integer
 //no letters or bullshit first
 
+// were going to need a way to sort what needs to get done first
+// keep track of how deep into parenthises we are one or two or more levels and
+// we will also need to implment pemdas for base cases not in parenthisis
+
 class objectStore {
     public Integer value
     public String type; // will likley change to enum
