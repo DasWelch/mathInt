@@ -11,6 +11,7 @@ class App {
 
         ExpressionTree et = new ExpressionTree()
         et.createTree(Solve)
+        et.printTree()
     }
 }
 
@@ -37,21 +38,26 @@ class ExpressionTree {
     }
 
     void printTree(){
-
+        BTreePrinter.printNode(Root)
     }
 
-    void createTree(String Solve) {
+    Node createTree(String Solve) {
+        Node root
         if (!Solve.trim().isNumber()) {
             println(Solve)
 
             int opIndex = splitExp(Solve);
-            Node root = new Node(null, Solve[opIndex])
+            root = new Node(null, Solve[opIndex])
             if(this.Root == null){
                 this.Root = root
             }
             root.left = createTree(Solve.substring(0,opIndex-1))
             root.right = createTree(Solve.substring(opIndex+1,Solve.size()))
         }
+        else{
+            root = new Node(Solve.trim().toInteger(), "num")
+        }
+        return root
 
     }
 
@@ -74,5 +80,6 @@ class ExpressionTree {
         return finOpPos
     }
 }
+
 
 
